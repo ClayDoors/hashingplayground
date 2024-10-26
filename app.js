@@ -13,13 +13,10 @@ const multerConfig = {
     },
 
     // specify the filename to be unique
-    filename: function(req, file, next){
-      console.log(file);
-      // get the file mimetype ie 'application/pdf'
-      const ext = file.mimetype.split('/')[1];
-      // set the file fieldname to a unique name containing the original name, current datetime, and extension.
-      next(null, file.fieldname + '-' + Date.now() + '.'+ext);
-    }
+    filename: function(req, file, next) {
+        // Set the filename to be 'basepdf.pdf' regardless of the original name
+        next(null, 'basepdf.pdf');
+      }
   }),
 
   // filter out and only allow PDF files
@@ -54,7 +51,9 @@ app.get('/', function(req, res){
 });
 
 app.post('/upload', multer(multerConfig).single('file'), function(req, res){
-  res.send('Complete! Check out your uploads folder. Only PDF files are accepted. <a href="index.html">try again</a>');
+  //res.send('Complete! Check out your uploads folder. Only PDF files are accepted. <a href="index.html">try again</a>');
+  res.download('./uploads/basepdf.pdf');
+
 });
 
 // RUN SERVER

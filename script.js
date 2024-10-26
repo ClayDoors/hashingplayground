@@ -1,0 +1,1 @@
+app.alert("Hello from embedded JavaScript!");
