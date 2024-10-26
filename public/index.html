@@ -9,66 +9,54 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+
+  <style>
+    /* CSS for background image */
+    body {
+      background-image: url('matrix_background.gif');
+      background-size: cover; /* Ensures the image covers the whole background */
+      background-repeat: no-repeat; /* Prevents the image from repeating */
+      background-attachment: fixed; /* Keeps the background fixed when scrolling */
+      background-position: center; /* Centers the image on the page */
+    }
+    </style>
+    </head>
+    
 
   <div class="jumbotron">
     <div class="container text-center">
       <h1>Express App File Uploads</h1>
       <p>An example that uploads a user's file to your local server.</p>
-      <p>Read more online at: <a href="https://medium.com/@Moonstrasse/how-to-make-a-basic-html-form-file-upload-using-multer-in-an-express-node-js-app-16dac2476610">Blog Post </a></p>
+      <p>Read more online at: <a href="https://medium.com/@Moonstrasse/how-to-make-a-basic-html-form-file-upload-using-multer-in-an-express-node-js-app-16dac2476610">Blog Post</a></p>
     </div>
   </div>
 
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-
       </div>
     </div>
   </nav>
 
   <div class="container text-center">
-      <div class="col-sm-12">
-        <div class="form">
-          <h1>Upload a Your File!</h1>
+    <div class="col-sm-12">
+      <div class="form">
+        <h1>Upload Your File!</h1>
 
-           <!-- IMAGE UPLOAD FORM -->
-          <form action="/upload" enctype="multipart/form-data" method="POST">
-
-                <div class="section">Note: Only PDF files are allowed.</div>
-                <div class="inner-wrap">
-                  <label><input type="file" id="file" name="file" /></label>
-                  <div class="button-section">
-                    <input type="submit" name="Upload" value="Upload Photo"/>
-                  </div>
-                </div>
-
+        <!-- IMAGE UPLOAD FORM -->
+        <form action="/upload" enctype="multipart/form-data" method="POST">
+          <div class="section">Note: Only PDF files are allowed.</div>
+          <div class="inner-wrap">
+            <label><input type="file" id="file" name="file" /></label>
+            <div class="button-section">
+              <input type="submit" name="Upload" value="Upload File"/>
             </div>
-          </form>
+          </div>
+        </form>
 
-
-        </div>
       </div>
+    </div>
   </div>
-
-
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
