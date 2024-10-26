@@ -31,7 +31,7 @@
         font-size: 22px;
     }
     .form h1{
-        background: #2A88AD;
+        background: #61de2a;
         padding: 5px 20px 5px 20px;
         margin: -30px -30px 30px -30px;
         border-radius: 10px 10px 0 0;
@@ -43,7 +43,7 @@
         -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
         -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
         box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-        border: 1px solid #257C9E;
+        border: 1px solid #51c51e;
     }
     .form label{
         display: block;
@@ -69,11 +69,11 @@
     }
     .form .section{
         font: normal 20px, serif;
-        color: #2A88AD;
+        color: #61de2a;
         margin-bottom: 5px;
     }
     .form .section span {
-        background: #2A88AD;
+        background: #61de2a;
         padding: 5px 10px 5px 10px;
         position: absolute;
         border-radius: 50%;
@@ -87,7 +87,7 @@
     }
     .form input[type="button"],
     .form input[type="submit"]{
-        background: #2A88AD;
+        background: #61de2a;
         padding: 8px 20px 8px 20px;
         border-radius: 5px;
         -webkit-border-radius: 5px;
@@ -98,12 +98,12 @@
         -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
         -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
         box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-        border: 1px solid #257C9E;
+        border: 1px solid #51c51e;
         font-size: 15px;
     }
     .form input[type="button"]:hover,
     .form input[type="submit"]:hover{
-        background: #2A6881;
+        background: #61de2a;
         -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
         -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
         box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
