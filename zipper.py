@@ -1,2 +1,2 @@
 import shutil
-shutil.make_archive("pdfs", 'zip', 'mydir')
+shutil.make_archive("pdfs.zip", 'zip', 'mydir')
