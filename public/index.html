@@ -15,47 +15,37 @@
     /* CSS for background image */
     body {
       background-image: url('matrix_background.gif');
-      background-size: cover; /* Ensures the image covers the whole background */
-      background-repeat: no-repeat; /* Prevents the image from repeating */
-      background-attachment: fixed; /* Keeps the background fixed when scrolling */
-      background-position: center; /* Centers the image on the page */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
     }
-    </style>
-    </head>
+  </style>
+</head>
+<body>
 
   <div class="container text-center">
     <div class="col-sm-12">
       <div class="form">
-        <h1>Upload Your File!</h1>
+        <h1>Upload Your File and Enter Text!</h1>
 
-        <!-- IMAGE UPLOAD FORM -->
+        <!-- Combined File Upload and Text Input Form -->
         <form action="/upload" enctype="multipart/form-data" method="POST">
           <div class="section">Note: Only PDF files are allowed.</div>
           <div class="inner-wrap">
-            <label><input type="file" id="file" name="file" /></label>
+            <label for="file">Choose File:</label>
+            <input type="file" id="file" name="file" />
+
+            <label for="userInput">Enter Text:</label>
+            <input type="text" id="userInput" name="userInput" required />
+
             <div class="button-section">
-              <input type="submit" name="Upload" value="Upload File"/>
+              <input type="submit" name="submit" value="Submit" />
             </div>
           </div>
         </form>
 
-        <h1>Enter a Text to Save as a Variable</h1>
-
-      <!-- Text Input Form -->
-      <form id="textForm">
-        <div class="inner-wrap">
-          <label for="userInput">Enter Text:</label>
-          <input type="text" id="userInput" name="userInput" required />
-          <div class="button-section">
-            
-            <button type="submit">Save Text</button>
-          </div>
-        </div>
-      </form>
-
-      <p id="responseMessage"></p>
-    </div>
-
+        <p id="responseMessage"></p>
       </div>
     </div>
   </div>
