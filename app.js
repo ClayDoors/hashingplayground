@@ -11,7 +11,7 @@ const multerConfig = {
   storage: multer.diskStorage({
     // specify destination
     destination: function(req, file, next){
-      next(null, './uploads');  // changed to 'uploads' folder
+      next(null, './');  // changed to 'uploads' folder
     },
 
     // specify the filename to be unique
@@ -42,7 +42,7 @@ const multerConfig = {
 
 // SETUP APP
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3250;
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use('/', express.static(__dirname + '/public'));
@@ -53,45 +53,42 @@ app.get('/', function(req, res){
 });
 
 app.post('/upload', multer(multerConfig).single('file'), function(req, res){
-  //res.send('Complete! Check out your uploads folder. Only PDF files are accepted. <a href="index.html">try again</a>');
-  if (req.file){
-    //Example OS command: Check file size using 'Ls - lh'
-    exec('mkdir mydir', (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing commmand: ${error.message}`);
-        return res.status(500).send("Error in processing the file.");
-      }
-      if (stderr) {
-        console.error(`stderr: ${stderr}`);
-          return res.status(500).send("Error in procesing the file.");
-      }
-      console.log(`File details: ${stdout}`);
-    
-      // send file for download
+    exec('python adder.py', (error, stdout, stderr) => {
+        if (error) {
+          console.log(`Error creating directory: ${error.message}`);
+          return;
+        }
+        if (stderr) {
+          console.log(`Standard error output: ${stderr}`);
+          return;
+        }
+        console.log(`Directory created: ${stdout}`);
+      });
+      exec('mv basepdf.pdf /mydir/basepdf.pdf', (error, stdout, stderr) => {
+        if (error) {
+          console.log(`Error creating directory: ${error.message}`);
+          return;
+        }
+        if (stderr) {
+          console.log(`Standard error output: ${stderr}`);
+          return;
+        }
+        console.log(`Directory created: ${stdout}`);
+      });
+      exec('mv modified.pdf /mydir/basepdf.pdf', (error, stdout, stderr) => {
+        if (error) {
+          console.log(`Error creating directory: ${error.message}`);
+          return;
+        }
+        if (stderr) {
+          console.log(`Standard error output: ${stderr}`);
+          return;
+        }
+        console.log(`Directory created: ${stdout}`);
+      });
+    res.download('modified.pdf', 'modpizza',);
   
-  res.download('./uploads/basepdf.pdf', 'basepdf', (err) => {
-    if (err){
-      console.error("Error downloading file:", err);
-  }
-
-  // Delete file after dowload
-  fs.unlink(' ./uploads/basepdf.pdf', (unlinkErr) => {
-    if (unlinkErr) {
-      console.error("Error deleting file: ", unlikErr);
-    } else{
-      console.log("File deleted after download.");
-    }
-    });
-  });
-  });
-
-
-} else {
-  res.status(400).send("No file uploaded. Please upload a PDF.");
-}
 });
-
-// RUN SERVER
 app.listen(port, function(){
   console.log(`Server listening on port ${port}`);
 });
