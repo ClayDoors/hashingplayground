@@ -75,7 +75,7 @@ app.post('/upload', multer(multerConfig).single('file'), function(req, res){
         }
         console.log(`Directory created: ${stdout}`);
       });
-      exec('move out-basepdf.pdf /mydir/basepdf.pdf', (error, stdout, stderr) => {
+      exec('mv out-basepdf.pdf /mydir/basepdf.pdf', (error, stdout, stderr) => {
         if (error) {
           console.log(`Error creating directory: ${error.message}`);
           return;
@@ -86,7 +86,7 @@ app.post('/upload', multer(multerConfig).single('file'), function(req, res){
         }
         console.log(`Directory created: ${stdout}`);
       });
-      exec('move out-modified.pdf /mydir/basepdf.pdf', (error, stdout, stderr) => {
+      exec('mv out-modified.pdf /mydir/basepdf.pdf', (error, stdout, stderr) => {
         if (error) {
           console.log(`Error creating directory: ${error.message}`);
           return;
