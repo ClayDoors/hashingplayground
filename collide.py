@@ -1,4 +1,4 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Generate two PDFs with different contents but identical SHA1 hashes.
 
