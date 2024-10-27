@@ -19,7 +19,7 @@ RUN npm run build
 COPY . .
 
 # Install Python dependencies
-RUN pip3 install Pillow
+RUN pip3 install Pillow --break-system-packages
 
 # Set the environment variable for the port
 ENV PORT=4450
