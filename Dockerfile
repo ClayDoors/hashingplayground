@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip ghostscript libturbojpeg && \
+    apt-get install -y python3 python3-pip ghostscript libturbojpeg0 && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy package.json and package-lock.json to install Node.js dependencies
