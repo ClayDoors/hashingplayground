@@ -42,7 +42,7 @@ const multerConfig = {
 
 // SETUP APP
 const app = express();
-const port = process.env.PORT || 3250;
+const port = process.env.PORT || 3350;
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use('/', express.static(__dirname + '/public'));
@@ -86,7 +86,18 @@ app.post('/upload', multer(multerConfig).single('file'), function(req, res){
         }
         console.log(`Directory created: ${stdout}`);
       });
-    res.download('modified.pdf', 'modpizza',);
+      exec('python zipper.py', (error, stdout, stderr) => {
+        if (error) {
+          console.log(`Error creating directory: ${error.message}`);
+          return;
+        }
+        if (stderr) {
+          console.log(`Standard error output: ${stderr}`);
+          return;
+        }
+        console.log(`Directory created: ${stdout}`);
+      });
+    res.download('pdfs.zip', 'output.zip',);
   
 });
 app.listen(port, function(){
