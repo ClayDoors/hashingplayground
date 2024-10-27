@@ -53,7 +53,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/upload', multer(multerConfig).single('file'), function(req, res){
-    exec('python adder.py', (error, stdout, stderr) => {
+    exec('python3 adder.py', (error, stdout, stderr) => {
         if (error) {
           console.log(`Error creating directory: ${error.message}`);
           return;
@@ -97,7 +97,7 @@ app.post('/upload', multer(multerConfig).single('file'), function(req, res){
         }
         console.log(`Directory created: ${stdout}`);
       });
-      exec('python zipper.py', (error, stdout, stderr) => {
+      exec('python3 zipper.py', (error, stdout, stderr) => {
         if (error) {
           console.log(`Error creating directory: ${error.message}`);
           return;
