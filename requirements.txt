@@ -2,7 +2,6 @@
 Pillow  # PIL implementation in Python
 imageio  # for image handling, might require turbojpeg
 ghostscript  # for working with Ghostscript
-pyth-jpeg-turbo  # TurboJPEG support
 
 # Specify Python version compatibility
 python_version >= "3.0"
