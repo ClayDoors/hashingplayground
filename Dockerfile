@@ -4,17 +4,19 @@ FROM node:18
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies and additional libraries for MuPDF
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip ghostscript libjpeg-turbo-progs wget build-essential && \
+    apt-get install -y python3 python3-pip ghostscript libjpeg-turbo-progs git build-essential \
+    libjpeg-dev zlib1g-dev xorg-dev libxcursor-dev libxrandr-dev libxinerama-dev \
+    mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev && \
     rm -rf /var/lib/apt/lists/*
 
-# Download and install MuPDF
-RUN wget https://mupdf.com/downloads/mupdf-1.22.2-source.tar.gz -O /tmp/mupdf.tar.gz && \
-    tar -xzvf /tmp/mupdf.tar.gz -C /tmp && \
-    cd /tmp/mupdf-* && \
-    make prefix=/usr/local install && \
-    rm -rf /tmp/mupdf*
+# Clone and build MuPDF (command-line tools only, skipping GUI/OpenGL viewer)
+RUN git clone https://github.com/ArtifexSoftware/mupdf.git /tmp/mupdf && \
+    cd /tmp/mupdf && \
+    make HAVE_X11=no HAVE_GLUT=no && \
+    make HAVE_X11=no HAVE_GLUT=no prefix=/usr/local install && \
+    rm -rf /tmp/mupdf
 
 # Copy package.json and package-lock.json to install Node.js dependencies
 COPY package*.json ./
