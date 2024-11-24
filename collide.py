@@ -87,7 +87,7 @@ with open("merged.pdf", "rb") as f:
 COUNT1 = getCount(d1)
 COUNT2 = getCount(d2)
 play = COUNT2
-
+#<</Type/Pages/Count %(play)i/Kids[%(KIDS2)s]>>
 
 kids = EnclosedString(dm, b"/Kids[", b"]")
 
@@ -95,6 +95,7 @@ kids = EnclosedString(dm, b"/Kids[", b"]")
 pages = kids[:-4].split(b" 0 R ")[1:]
 
 template = b"""%%PDF-1.4
+
 
 1 0 obj
 <<
@@ -112,7 +113,7 @@ template = b"""%%PDF-1.4
 endobj
 
 2 0 obj
-<</Type/Pages/Count %(play)i/Kids[%(KIDS2)s]>>
+<</Type/Pages/Count 2/Kids[%(KIDS2)s]>>
 endobj 
 
 3 0 obj
