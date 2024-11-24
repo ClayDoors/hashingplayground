@@ -8,14 +8,14 @@ WORKDIR /app
 RUN apt-get update && \
     apt-get install -y python3 python3-pip ghostscript libjpeg-turbo-progs git build-essential \
     libjpeg-dev zlib1g-dev xorg-dev libxcursor-dev libxrandr-dev libxinerama-dev \
-    mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev liblcms2-dev && \
+    mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev liblcms2-dev liblcms2-mt-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Clone and build MuPDF (command-line tools only, skipping GUI/OpenGL viewer)
-RUN git clone https://github.com/ArtifexSoftware/mupdf.git /tmp/mupdf && \
+RUN git clone --recursive https://github.com/ArtifexSoftware/mupdf.git /tmp/mupdf && \
     cd /tmp/mupdf && \
-    make HAVE_X11=no HAVE_GLUT=no && \
-    make HAVE_X11=no HAVE_GLUT=no prefix=/usr/local install && \
+    make HAVE_X11=no HAVE_GLUT=no HAVE_LCMS2=yes && \
+    make HAVE_X11=no HAVE_GLUT=no HAVE_LCMS2=yes prefix=/usr/local install && \
     rm -rf /tmp/mupdf
 
 # Copy package.json and package-lock.json to install Node.js dependencies
