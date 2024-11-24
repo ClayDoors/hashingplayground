@@ -11,7 +11,7 @@ import sys
 import hashlib
 
 
-MUTOOL = "mutool.exe"
+MUTOOL = "mutool"
 
 def EnclosedString(d, starts, ends):
   off = d.find(starts) + len(starts)
