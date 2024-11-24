@@ -6,9 +6,15 @@ WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip ghostscript libjpeg-turbo-progs && \
+    apt-get install -y python3 python3-pip ghostscript libjpeg-turbo-progs wget build-essential && \
     rm -rf /var/lib/apt/lists/*
 
+# Download and install MuPDF
+RUN wget https://mupdf.com/downloads/mupdf-1.22.2-source.tar.gz -O /tmp/mupdf.tar.gz && \
+    tar -xzvf /tmp/mupdf.tar.gz -C /tmp && \
+    cd /tmp/mupdf-* && \
+    make prefix=/usr/local install && \
+    rm -rf /tmp/mupdf*
 
 # Copy package.json and package-lock.json to install Node.js dependencies
 COPY package*.json ./
