@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apt-get update && \
     apt-get install -y python3 python3-pip ghostscript libjpeg-turbo-progs git build-essential \
     libjpeg-dev zlib1g-dev xorg-dev libxcursor-dev libxrandr-dev libxinerama-dev \
-    mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev && \
+    mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev liblcms2-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Clone and build MuPDF (command-line tools only, skipping GUI/OpenGL viewer)
