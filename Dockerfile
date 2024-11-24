@@ -35,6 +35,7 @@ ENV PORT=4450
 
 # Expose the port
 EXPOSE 4450
+ENV PATH="/usr/local/bin:$PATH"
 
 # Start the application
 CMD ["npm", "start"]
