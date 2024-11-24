@@ -86,6 +86,7 @@ with open("merged.pdf", "rb") as f:
 
 COUNT1 = getCount(d1)
 COUNT2 = getCount(d2)
+print(COUNT2)
 
 
 kids = EnclosedString(dm, b"/Kids[", b"]")
