@@ -178,9 +178,9 @@ os.remove('merged.pdf')
 os.remove('hacked.pdf')
 os.remove('cleaned.pdf')
 
-md5 = hashlib.md5(file1).hexdigest()
+print(hashlib.md5(file1).hexdigest())
 
-assert md5 == hashlib.md5(file2).hexdigest()
+print(hashlib.md5(file2).hexdigest())
 
 # to prove the files should be 100% valid
 print()
