@@ -157,10 +157,10 @@ cleaned = cleaned.replace(
     b" 65536 f \n0000000018 00000 n \n",
     1)
 
-with open("pdf1.bin", "rb") as f:
+with open("first.pdf", "rb") as f:
     prefix1 = f.read()
 
-with open("pdf2.bin", "rb") as f:
+with open("second.pdf", "rb") as f:
     prefix2 = f.read()
 
 file1 = prefix1 + b"\n" + cleaned[192:]
