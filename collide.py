@@ -115,11 +115,11 @@ template = b"""%%PDF-1.4
 endobj
 
 2 0 obj
-<</Type/Pages/Count %(COUNT2)b/Kids[%(KIDS2)b]>>
+<</Type/Pages/Count %(COUNT2)s/Kids[%(KIDS2)s]>>
 endobj 
 
 3 0 obj
-<</Type/Pages/Count %(COUNT1)b/Kids[%(KIDS1)b]>>
+<</Type/Pages/Count %(COUNT1)s/Kids[%(KIDS1)s]>>
 endobj
 
 %% overwritten - was a fake page to fool merging
@@ -130,10 +130,10 @@ endobj
 """
 
 contents = template % {
-    b'COUNT1': str(COUNT1).encode(),  # Encode integer as bytes
-    b'COUNT2': str(COUNT2).encode(),  # Encode integer as bytes
-    b'KIDS1': KIDS1,                  # Already bytes
-    b'KIDS2': KIDS2                   # Already bytes
+    'COUNT1': COUNT1,
+    'COUNT2': COUNT2,
+    'KIDS1': KIDS1.decode(),  # Decode bytes to string
+    'KIDS2': KIDS2.decode()   # Decode bytes to string
 }
 
 # adjust parents for the first set of pages
@@ -157,10 +157,10 @@ cleaned = cleaned.replace(
     b" 65536 f \n0000000018 00000 n \n",
     1)
 
-with open("first.pdf", "rb") as f:
+with open("pdf1.bin", "rb") as f:
     prefix1 = f.read()
 
-with open("second.pdf", "rb") as f:
+with open("pdf2.bin", "rb") as f:
     prefix2 = f.read()
 
 file1 = prefix1 + b"\n" + cleaned[192:]
@@ -178,9 +178,9 @@ os.remove('merged.pdf')
 os.remove('hacked.pdf')
 os.remove('cleaned.pdf')
 
-print(hashlib.md5(file1).hexdigest())
+md5 = hashlib.md5(file1).hexdigest()
 
-print(hashlib.md5(file2).hexdigest())
+assert md5 == hashlib.md5(file2).hexdigest()
 
 # to prove the files should be 100% valid
 print()
@@ -190,4 +190,5 @@ print()
 os.system(MUTOOL + ' info -X collision2.pdf')
 
 print()
+print("MD5: %s" % md5)
 print("Success!")
