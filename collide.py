@@ -190,5 +190,4 @@ print()
 os.system(MUTOOL + ' info -X collision2.pdf')
 
 print()
-print("MD5: %s" % md5)
 print("Success!")
