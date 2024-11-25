@@ -115,11 +115,11 @@ template = b"""%%PDF-1.4
 endobj
 
 2 0 obj
-<</Type/Pages/Count %(COUNT2)d/Kids[%(KIDS2)s]>>
+<</Type/Pages/Count %(COUNT2)b/Kids[%(KIDS2)b]>>
 endobj 
 
 3 0 obj
-<</Type/Pages/Count %(COUNT1)d/Kids[%(KIDS1)s]>>
+<</Type/Pages/Count %(COUNT1)b/Kids[%(KIDS1)b]>>
 endobj
 
 %% overwritten - was a fake page to fool merging
@@ -130,10 +130,10 @@ endobj
 """
 
 contents = template % {
-    'COUNT1': COUNT1,
-    'COUNT2': COUNT2,
-    'KIDS1': KIDS1.decode(),  # Decode bytes to string
-    'KIDS2': KIDS2.decode()   # Decode bytes to string
+    b'COUNT1': str(COUNT1).encode(),  # Encode integer as bytes
+    b'COUNT2': str(COUNT2).encode(),  # Encode integer as bytes
+    b'KIDS1': KIDS1,                  # Already bytes
+    b'KIDS2': KIDS2                   # Already bytes
 }
 
 # adjust parents for the first set of pages
